@@ -1,56 +1,38 @@
 #include <iostream>
+#include "lista_encadeada.h"
 
-
-
-    //Struct do container
-    struct TElemento {
-        int dado;
-        TElemento* prox;
-    };
-
-    //Struct da Lista
-    struct TLista {
-        TElemento* inicio;
-    };
-
-// Quando são varios elementos, e você não tem conhecimento deles é necessário um navegador que vai chegar até o ultimo elemento.
-TElemento* encontrarUltimo(TElemento* container){
-    TElemento* nav = container;
-    while ( nav->prox != NULL) {
-        nav = nav->prox;
-    };
-    return nav;
-}
-
+using namespace std;
 
 //Alocação dinâmica em lista.
 int main() {
+    TJogador j1;
+    j1.nome = "Luk4h";
 
-    // 1 - Inicializa-se o TElemento.
-    TElemento* T1 = new TElemento;
+    TJogador j2;
+    j2.nome = "Pablo";
 
-    // 2 - Adiciona-se o dado.
-    T1->dado = 10;
+    TJogador j3;
+    j3.nome = "Fabio";
 
-    // 3 - Cria o indicador do proxímo elemento.
-    T1->prox = NULL;
+    TLista* l1 = inicializa_lista_encadeada(j1);
 
-    // 4 - Inicializa-se o proxímo elemento.
-    TElemento* T2 = new TElemento;    
+    // cout << l1->inicio->jogador.nome << "\n";
 
-    // 5 - Adiciona o valor do dado do proxímo elemento.
-    T2 -> dado = 20;
 
-    // 6 - Inicializa o apontador para o proxímo.
-    T2 -> prox = NULL;
-
-    // 7 - Define que o Elemento anterior aponta para o proxímo e mais recente elemento.
-    T1 -> prox = T2;
-
-    // Função para encontrar o ultimo Elemento da lista.
-    TElemento* ultimoContainer = encontrarUltimo(T1);
     
-    std::cout<<ultimoContainer->dado<<std::endl;
+    inserir_fim_lista(l1, j2);
+    TElemento* ultimo = encontrar_ultimo_elemento(l1->inicio);
+
+    cout << ultimo->jogador.nome << "\n";
+
+    
+    inserir_fim_lista(l1, j3);
+    TElemento* ultimo2 = encontrar_ultimo_elemento(l1->inicio);
+
+    cout << ultimo2->jogador.nome << "\n";
+
+
+
 
     return 0;
 
