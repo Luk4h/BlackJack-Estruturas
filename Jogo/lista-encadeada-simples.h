@@ -1,50 +1,5 @@
 #include <iostream>
 
-// struct TCarta {
-//     int naipe;
-//     int valor;
-// };
-
-// template<typename T>
-// struct TElemento {
-//     T dado;
-//     TElemento* prox;
-// };
-
-// //Struct do container
-// struct TJogador{
-//     std::string nome;
-//     TElemento<TJogador>* cartas;
-// };
-
-// //Struct da Lista
-// template<typename T>
-// struct TLista {
-//     TElemento<T>* inicio;
-// };
-
-// // Quando são varios elementos, e você não tem conhecimento deles é necessário um navegador que vai chegar até o ultimo elemento.
-// template <typename T>
-// TElemento<T>* encontrarUltimo(TElemento<T>* container){
-//     TElemento<T>* nav = container;
-//     while ( nav->prox != NULL) {
-//         nav = nav->prox;
-//     };
-//     return nav;
-// }
-
-// template<typename T>
-// TLista<T>* inicializa_lista_encadeada(T &dado){
-
-
-//     return l;
-// }
-
-struct TJogador{
-    std::string nome;
-};
-
-
 template <typename T>
 struct TElemento{
     T dado;
@@ -56,14 +11,6 @@ struct TLista{
     TElemento<T> *inicio;
 };
 
-bool operator == (TJogador j1, TJogador j2) {
-    if ( j1.nome == j2.nome ) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
 template <typename T>
 void inicializa_lista_encadeada(TLista<T> &l, T dado){
     TElemento<T> *novo = new TElemento<T>;
@@ -74,9 +21,9 @@ void inicializa_lista_encadeada(TLista<T> &l, T dado){
 }
 
 template <typename T>
-TElemento<T>* encontrar_ultimo_elemento(TElemento<T>* container){
-    TElemento<T>* nav = container;
-    while(nav->prox != NULL){
+TElemento<T>* encontrar_ultimo_elemento(TLista<T> &l){
+    TElemento<T>* nav = l.inicio;
+    while( nav->prox != NULL){
         nav = nav->prox;
     }
     return nav;
@@ -84,27 +31,39 @@ TElemento<T>* encontrar_ultimo_elemento(TElemento<T>* container){
 
 template <typename T>
 void inserir_fim_lista(TLista<T> &lista, T dado){
-    TElemento<T>* ultimo = encontrar_ultimo_elemento(lista.inicio);
+    if ( lista.inicio == NULL ){
+        inicializa_lista_encadeada(lista, dado);
+    } else {
+        TElemento<T>* ultimo = encontrar_ultimo_elemento(lista);
 
-    TElemento<T>* container = new TElemento<T>;
-    container->dado = dado;
-    container->prox = NULL;
+        TElemento<T>* container = new TElemento<T>;
+        container->dado = dado;
+        container->prox = NULL;
 
-    ultimo->prox = container;
+        if ( ultimo == NULL ){
+            ultimo = container;
+        } else{
+            ultimo->prox = container;
+        }
+    }
 }
 
 template<typename T>
 void inserir_no_inicio(TLista<T> &l, T dado){
-    TElemento<T> *novo = new TElemento<T>;
-    novo->dado = dado;
-    novo->prox = NULL;
+    if ( lista.inicio == NULL ){
+        inicializa_lista_encadeada(lista, dado);
+    } else {
+        TElemento<T> *novo = new TElemento<T>;
+        novo->dado = dado;
+        novo->prox = NULL;
 
-    if(l.inicio == NULL){
-        l.inicio = novo;
-    }
-    else{
-        novo->prox = l.inicio;
-        l.inicio = novo;
+        if(l.inicio == NULL){
+            l.inicio = novo;
+        }
+        else{
+            novo->prox = l.inicio;
+            l.inicio = novo;
+        }
     }
 }
 
@@ -149,10 +108,11 @@ template<typename T>
 void imprimir_lista_encadeada(TLista<T> &l){
     TElemento<T> *nav = new TElemento<T>;
     nav = l.inicio;
-    while(nav != NULL){
-        cout << nav->dado.nome << endl;
+    while(nav->prox != NULL && nav->prox != l.inicio){
+        cout << nav->dado << endl;
         nav = nav->prox;
     }
+    cout << nav->dado << endl;
 }
 
 
