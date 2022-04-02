@@ -14,25 +14,14 @@ int main() {
     TJogador j3;
     j3.nome = "Fabio";
 
-    TLista* l1 = inicializa_lista_encadeada(j1);
+    TLista<TJogador> lista;
 
-    // cout << l1->inicio->jogador.nome << "\n";
-
-
+    inicializa_lista_encadeada(lista, j1);
+    inserir_fim_lista(lista, j3);
+    inserir_na_posicao(lista, j2, 1);
+    imprimir_lista_encadeada(lista);
     
-    inserir_fim_lista(l1, j2);
-    TElemento* ultimo = encontrar_ultimo_elemento(l1->inicio);
-
-    cout << ultimo->jogador.nome << "\n";
-
-    
-    inserir_fim_lista(l1, j3);
-    TElemento* ultimo2 = encontrar_ultimo_elemento(l1->inicio);
-
-    cout << ultimo2->jogador.nome << "\n";
-
-
-
+    cout << obter_indice(lista, j3) << endl;
 
     return 0;
 
