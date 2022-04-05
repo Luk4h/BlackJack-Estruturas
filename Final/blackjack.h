@@ -185,7 +185,7 @@ void verifica_vencedor(TLista<TJogador> &jogadores, TListaEstatica<TCarta, MAX> 
         system("cls");
         imprimir_lista_encadeada(jogadores_vencedores);
         criar_baralho_embaralhado(baralho);
-        iniciar_jogov2(jogadores_vencedores, baralho, partida + 1);
+        iniciar_jogo(jogadores_vencedores, baralho, partida + 1);
     }
     else if (quantidade_vencedores == 0){
         cout << "NAO HOUVERAM VENCEDORES";
