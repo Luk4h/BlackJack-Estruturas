@@ -1,9 +1,11 @@
 #include <iostream>
 #include <string>
 #include <time.h>
+#include <string>
 #include "lista-encadeada-dupla.h"
 #include "lista-encadeada-simples.h"
 #include "lista-estatica.h"
+#include "log.h"
 
 using namespace std;
 std::string arr_naipes[4] = {
@@ -35,19 +37,17 @@ bool operator == (TJogador j1, TJogador j2) {
 }
 
 ostream& operator <<(ostream &saida, TJogador &j){
-    cout << "==================\n"
-         << "Nome: " << j.nome
-         << "\n==================\n";
-    cout << "Soma: " << (j.soma_cartas == 0 || j.soma_cartas == NULL ? j.soma_cartas_history : j.soma_cartas)
-         << "\n==================\n";
+    imprimir( "==================\nNome: " + j.nome + "\n==================\n");
+    imprimir( "Soma: " + (j.soma_cartas == 0 || j.soma_cartas == NULL ? to_string(j.soma_cartas_history) : to_string(j.soma_cartas)) + "\n==================\n");
 
     return saida;
 }
 
 ostream& operator <<(ostream &saida, TCarta &c){
-    cout << "Naipe: " << arr_naipes[c.naipe] << " | Valor: " << c.valor;
+    imprimir( "Naipe: " + arr_naipes[c.naipe] + " | Valor: " + to_string(c.valor));
     return saida;
 }
+
 
 // Inicialização do baralho como uma lista estatica.
 template<int MAX>
@@ -178,7 +178,7 @@ void verifica_vencedor(TLista<TJogador> &jogadores, TListaEstatica<TCarta, MAX> 
     preenche_jogadores_vencedores(jogadores_vencedores, jogadores, maior_soma);
     system("cls");
 
-    cout << "\n\n====================\n-----VENCEDORES-----\n====================\n";
+    imprimir( "\n\n====================\n-----VENCEDORES-----\n====================\n" );
 
     int quantidade_vencedores = get_qtde_jogadores(jogadores_vencedores);
     if(quantidade_vencedores > 1){
@@ -188,8 +188,8 @@ void verifica_vencedor(TLista<TJogador> &jogadores, TListaEstatica<TCarta, MAX> 
         iniciar_jogo(jogadores_vencedores, baralho, partida + 1);
     }
     else if (quantidade_vencedores == 0){
-        cout << "NAO HOUVERAM VENCEDORES";
-        cout << "\n====================\n\n";
+        imprimir( "NAO HOUVERAM VENCEDORES" );
+        imprimir( "\n====================\n\n" );
     }
     else{
         imprimir_lista_encadeada(jogadores_vencedores);
@@ -207,7 +207,7 @@ void iniciar_jogo(TLista<TJogador> &jogadores, TListaEstatica<TCarta, MAX> &bara
     int rodada = 0;
     int rCounter = 1;
     system("cls");
-    cout << "\n\n==============\nRodada: " << rCounter << "\n==============\n\n";
+    imprimir( "\n\n==============\nRodada: " + to_string(rCounter) + "\n==============\n\n");
     rCounter++;
     while ( nav->prox != NULL && baralho.quantidade > 0) {
 
@@ -217,9 +217,7 @@ void iniciar_jogo(TLista<TJogador> &jogadores, TListaEstatica<TCarta, MAX> &bara
         if( rodada != 0 && rodada % quantidade_jogadores == 0){
             system("pause");
             system("cls");
-            cout << "\n==============\n" <<
-                    "Rodada: " << rCounter <<
-                    "\n==============\n";
+            imprimir( "\n==============\nRodada: " + to_string(rCounter) + "\n==============\n");
             rCounter++;
         }
 
@@ -242,26 +240,26 @@ void iniciar_jogo(TLista<TJogador> &jogadores, TListaEstatica<TCarta, MAX> &bara
 void jogador_pensando(TJogador &j){
     if(j.soma_cartas > 21){
         j.jogando = false;
-        cout << "O " << j.nome << " passou de 21." << endl << endl;
+        imprimir( "O " + j.nome + " passou de 21.\n");
     }
     else if(j.soma_cartas == 21){
         j.jogando = false;
-        cout << "O " << j.nome << " atingiu 21." << endl << endl;
+        imprimir( "O " + j.nome + " atingiu 21.\n");
     }
     else{
         srand(time(NULL));
         int chance_de_parar = rand() % 10 + 1;
         if(j.soma_cartas > 18 && chance_de_parar > 3){
             j.jogando = false;
-            cout << "O " << j.nome << " deu stop." << endl << endl;
+            imprimir( "O " + j.nome + " deu stop.\n\n" );
         }
         else if(j.soma_cartas > 15 && chance_de_parar > 5){
             j.jogando = false;
-            cout << "O " << j.nome << " deu stop." << endl << endl;
+            imprimir( "O " + j.nome + " deu stop.\n\n" );
         }
         else if(j.soma_cartas > 12 && chance_de_parar > 8){
             j.jogando = false;
-            cout << "O " << j.nome << " deu stop." << endl << endl;
+            imprimir( "O " + j.nome + " deu stop.\n\n" );
         }
     }
 }
@@ -274,7 +272,7 @@ void processar_rodada(TJogador &j, TListaEstatica<TCarta, MAX> &baralho){
         remover_fim_lista_estatica(baralho);
         j.soma_cartas += carta_distribuicao.valor;
         inserir_fim_lista_estatica(j.mao, carta_distribuicao);
-        cout << "O " << j.nome << " recebeu a carta: " << carta_distribuicao.valor << endl << endl;
+        imprimir( "O " + j.nome + " recebeu a carta: " + to_string(carta_distribuicao.valor) + "\n\n");
     }
 }
 

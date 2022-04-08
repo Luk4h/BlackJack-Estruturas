@@ -1,0 +1,200 @@
+
+
+==============
+Rodada: 1
+==============
+
+
+O Jogador 1 recebeu a carta: 7
+
+
+O Jogador 2 recebeu a carta: 5
+
+
+O Jogador 3 recebeu a carta: 3
+
+
+O Jogador 4 recebeu a carta: 6
+
+
+O Jogador 5 recebeu a carta: 13
+
+
+
+==============
+Rodada: 2
+==============
+
+O Jogador 1 recebeu a carta: 11
+
+
+O Jogador 1 deu stop.
+
+
+O Jogador 2 recebeu a carta: 9
+
+
+O Jogador 3 recebeu a carta: 6
+
+
+O Jogador 4 recebeu a carta: 6
+
+
+O Jogador 5 recebeu a carta: 5
+
+
+O Jogador 5 deu stop.
+
+
+
+==============
+Rodada: 3
+==============
+
+O Jogador 2 recebeu a carta: 5
+
+
+O Jogador 2 deu stop.
+
+
+O Jogador 3 recebeu a carta: 10
+
+
+O Jogador 3 deu stop.
+
+
+O Jogador 4 recebeu a carta: 1
+
+
+O Jogador 4 deu stop.
+
+
+==================
+Nome: Jogador 1
+==================
+
+Soma: 18
+==================
+
+==================
+Nome: Jogador 2
+==================
+
+Soma: 19
+==================
+
+==================
+Nome: Jogador 3
+==================
+
+Soma: 19
+==================
+
+==================
+Nome: Jogador 4
+==================
+
+Soma: 13
+==================
+
+==================
+Nome: Jogador 5
+==================
+
+Soma: 18
+==================
+
+
+
+====================
+-----VENCEDORES-----
+====================
+
+==================
+Nome: Jogador 2
+==================
+
+Soma: 19
+==================
+
+==================
+Nome: Jogador 3
+==================
+
+Soma: 19
+==================
+
+
+
+==============
+Rodada: 1
+==============
+
+
+O Jogador 2 recebeu a carta: 6
+
+
+O Jogador 3 recebeu a carta: 13
+
+
+
+==============
+Rodada: 2
+==============
+
+O Jogador 2 recebeu a carta: 7
+
+
+O Jogador 3 recebeu a carta: 4
+
+
+
+==============
+Rodada: 3
+==============
+
+O Jogador 2 recebeu a carta: 4
+
+
+O Jogador 3 recebeu a carta: 4
+
+
+O Jogador 3 atingiu 21.
+
+
+==============
+Rodada: 4
+==============
+
+O Jogador 2 recebeu a carta: 11
+
+
+O Jogador 2 passou de 21.
+
+==================
+Nome: Jogador 2
+==================
+
+Soma: 28
+==================
+
+==================
+Nome: Jogador 3
+==================
+
+Soma: 21
+==================
+
+
+
+====================
+-----VENCEDORES-----
+====================
+
+==================
+Nome: Jogador 3
+==================
+
+Soma: 21
+==================
+
